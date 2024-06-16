@@ -21,6 +21,11 @@ server:
     size: 200M
     storageClass: "oci-bv"
     accessMode: ReadWriteOnce
+    annotations:
+      volumeName: vault-pv
+      volumeMounts:
+        - name: vault-pv
+      mountPath: /vault/data
 
 ui:
   enabled: true
