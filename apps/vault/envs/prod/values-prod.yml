@@ -25,7 +25,6 @@ server:
       volumeName: vault-pv
       volumeMounts:
         - name: vault-pv
-      mountPath: /vault/data
 
 ui:
   enabled: true
