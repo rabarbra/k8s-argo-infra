@@ -17,11 +17,7 @@ server:
     enabled: true
 
   dataStorage:
-    enabled: true
-    size: 200M
-    storageClass: ""
-    accessMode: ReadWriteOnce
-    volumeName: vault-pv
+    enabled: false
 
 ui:
   enabled: true
