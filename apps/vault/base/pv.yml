@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: vault-pv
 spec:
-  storageClassName: ""
+  storageClassName: "oci-bv"
   capacity:
     storage: 200M
   accessModes:
