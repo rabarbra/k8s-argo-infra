@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: vault
+spec:
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+        - {{ .Values.server.dataStorage.accessMode | default "ReadWriteOnce" }}
+      storageClassName: "my-storage-class"
+      resources:
+        requests:
+          storage: {{ .Values.server.dataStorage.size }}
+        storageClassName: {{ .Values.server.dataStorage.storageClass }}
+        volumeName: {{ .Values.server.dataStorage.volumeName }}
+
