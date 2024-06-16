@@ -19,8 +19,10 @@ server:
   dataStorage:
     enabled: true
     size: 200M
-    storageClass: null
+    storageClass: oci-bv
     accessMode: ReadWriteOnce
+    annotations:
+      volumeName: "vault-pv"
 
 ui:
   enabled: true
