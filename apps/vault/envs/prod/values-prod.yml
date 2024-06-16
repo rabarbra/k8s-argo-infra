@@ -19,7 +19,7 @@ server:
   dataStorage:
     enabled: true
     size: 200M
-    storageClass: local-storage
+    storageClass: local-path
     accessMode: ReadWriteOnce
 
 ui:
