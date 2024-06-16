@@ -8,11 +8,10 @@ spec:
       name: data
     spec:
       accessModes:
-        - {{ .Values.server.dataStorage.accessMode | default "ReadWriteOnce" }}
-      storageClassName: "my-storage-class"
+        - "ReadWriteOnce"
       resources:
         requests:
-          storage: {{ .Values.server.dataStorage.size }}
-        storageClassName: {{ .Values.server.dataStorage.storageClass }}
-        volumeName: {{ .Values.server.dataStorage.volumeName }}
+          storage: 200M
+        storageClassName: ""
+        volumeName: vault-pv
 
