@@ -23,8 +23,6 @@ server:
     accessMode: ReadWriteOnce
     annotations:
       volumeName: vault-pv
-      volumeMounts:
-        - name: vault-pv
 
 ui:
   enabled: true
