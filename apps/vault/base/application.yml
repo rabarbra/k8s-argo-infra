@@ -6,15 +6,15 @@ metadata:
 spec:
   project: default
   sources:
+  - repoURL: https://github.com/rabarbra/k8s-argo-infra.git
+    targetRevision: HEAD
+    ref: values
   - repoURL: https://helm.releases.hashicorp.com
     chart: vault
     targetRevision: "0.28.0"
     helm:
       valueFiles:
         - $values/apps/vault/envs/prod/values-prod.yml
-  - repoURL: https://github.com/rabarbra/k8s-argo-infra.git
-    targetRevision: HEAD
-    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: vault
