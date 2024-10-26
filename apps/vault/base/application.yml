@@ -5,15 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/rabarbra/k8s-argo-infra.git
-    targetRevision: HEAD
+  sources:
+  - repoURL: https://helm.releases.hashicorp.com
+    chart: vault
+    targetRevision: "0.28.0"
     helm:
-      chart: vault
-      repoURL: https://helm.releases.hashicorp.com
-      targetRevision: "0.28.0"
       valueFiles:
-        - apps/vault/envs/prod/values-prod.yml
+        - $values/apps/vault/envs/prod/values-prod.yml
+  - repoURL: https://github.com/rabarbra/k8s-argo-infra.git
+    targetRevision: HEAD
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: vault
@@ -28,4 +29,3 @@ spec:
     kind: MutatingWebhookConfiguration
     jqPathExpressions:
     - .webhooks[]?.clientConfig.caBundle
-
