@@ -5,16 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-  - repoURL: https://github.com/rabarbra/k8s-argo-infra.git
+  source:
+    repoURL: https://github.com/rabarbra/k8s-argo-infra.git
     targetRevision: HEAD
-    ref: values
-  - repoURL: https://helm.releases.hashicorp.com
-    chart: vault
-    targetRevision: "0.28.0"
+    path: apps/vault/base  # Specify the path to the application YAML if needed
     helm:
+      chart: vault
+      repoURL: https://helm.releases.hashicorp.com
+      targetRevision: "0.28.0"
       valueFiles:
-        - $values/apps/vault/envs/prod/values-prod.yml
+        - apps/vault/envs/prod/values-prod.yml
   destination:
     server: https://kubernetes.default.svc
     namespace: vault
