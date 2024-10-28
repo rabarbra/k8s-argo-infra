@@ -11,7 +11,7 @@ spec:
     targetRevision: "4.0.18"
     helm:
       valueFiles:
-        - $values/apps/vault/envs/prod/values.yaml
+        - $values/apps/nfs/envs/prod/values.yaml
   - repoURL: https://github.com/rabarbra/k8s-argo-infra.git
     targetRevision: HEAD
     ref: values
