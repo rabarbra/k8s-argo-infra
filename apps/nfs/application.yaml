@@ -4,17 +4,28 @@ metadata:
   name: nfs-provisioner
   namespace: argocd
 spec:
-  project: default
+  project: infra
   sources:
   - repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
     chart: nfs-subdir-external-provisioner
     targetRevision: "4.0.18"
     helm:
-      valueFiles:
-        - $values/apps/nfs/envs/prod/values.yaml
-  - repoURL: https://github.com/rabarbra/k8s-argo-infra.git
-    targetRevision: HEAD
-    ref: values
+      valuesObject:
+        nfs:
+          server: 10.0.10.208
+          path: /data
+        storageClass:
+          create: true
+          defaultClass: true
+          name: nfs-client
+          allowVolumeExpansion: true
+          reclaimPolicy: Delete
+          archiveOnDelete: true
+          onDelete:
+          pathPattern:
+          accessModes: ReadWriteOnce
+          volumeBindingMode: Immediate
+          annotations: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: nfs

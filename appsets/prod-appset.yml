@@ -11,19 +11,21 @@ spec:
       repoURL: https://github.com/rabarbra/k8s-argo-infra.git
       revision: HEAD
       directories:
-      - path: apps/*/envs/prod
+      - path: apps/*
+      - path: apps/disabled
+        exclude: true
   template:      
     metadata:
-      name: '{{index .path.segments 1}}-{{index .path.segments 3}}' 
+      name: '{{ index .path.segments 1 }}-appset-infra' 
     spec:
-      project: default
+      project: infra
       source:
         repoURL: https://github.com/rabarbra/k8s-argo-infra.git
         targetRevision: HEAD
-        path: '{{index .path.segments 0}}/{{index .path.segments 1}}/base'
+        path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{index .path.segments 1}}-{{index .path.segments 3}}'
+        namespace: '{{ index .path.segments 1 }}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true  
