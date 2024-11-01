@@ -12,7 +12,7 @@ This repository contains all the apps for my k8s infrastructure using GitOps wit
 To set up the entire infrastructure defined in this repository, execute the following command:
 
 ```bash
-    kubectl apply -f https://raw.githubusercontent.com/rabarbra/k8s-argo-infra/refs/heads/main/root-app.yml
+kubectl apply -f https://raw.githubusercontent.com/rabarbra/k8s-argo-infra/refs/heads/main/root-app.yml
 ```
 
 This command will deploy the main ArgoCD application, which acts as the entry point for synchronizing and managing other applications and resources in the cluster.
