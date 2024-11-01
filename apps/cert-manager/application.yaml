@@ -10,7 +10,10 @@ spec:
     chart: cert-manager
     targetRevision: "1.16.1"
     helm:
-      valuesObject: {}
+      valuesObject:
+        crds:
+          keep: true
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
