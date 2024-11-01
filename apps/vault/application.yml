@@ -39,7 +39,8 @@ spec:
             activeService: true
             hosts:
               - host: vault.rabarbra.me
-                paths: /
+                paths:
+                  - /
             tls:
               - secretName: vault-tls
                 hosts:
