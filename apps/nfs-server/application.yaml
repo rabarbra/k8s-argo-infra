@@ -13,11 +13,13 @@ spec:
       valuesObject:
         persistence:
           enabled: true
-          storageClass: "sata-large"
-          size: 100Gi
+          storageClass: "local-path"
+          size: 200Gi
         storageClass:
           name: nfs-client
           defaultClass: true
+        nodeSelector:
+          node-role.kubernetes.io/master: true
   destination:
     server: https://kubernetes.default.svc
     namespace: nfs
