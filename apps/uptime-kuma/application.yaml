@@ -46,7 +46,6 @@ spec:
         volume:
           enabled: true
           accessMode: ReadWriteOnce
-          storageClassName: "local-path"
           size: 1Gi
   destination:
     server: https://kubernetes.default.svc
