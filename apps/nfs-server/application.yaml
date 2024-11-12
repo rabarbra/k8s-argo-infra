@@ -14,7 +14,7 @@ spec:
         persistence:
           enabled: true
           storageClass: "local-path"
-          size: 200Gi
+          size: 150Gi
         storageClass:
           name: nfs-client
           defaultClass: true
