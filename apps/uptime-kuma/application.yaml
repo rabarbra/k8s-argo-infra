@@ -46,7 +46,8 @@ spec:
         volume:
           enabled: true
           accessMode: ReadWriteOnce
-          size: 1Gi
+          storageClass: "local-path"
+          size: 200Mi
   destination:
     server: https://kubernetes.default.svc
     namespace: uptime-kuma
