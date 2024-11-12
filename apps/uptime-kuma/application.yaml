@@ -11,6 +11,8 @@ spec:
     targetRevision: "2.20.0"
     helm:
       valuesObject:
+        nodeSelector:
+          node-role.kubernetes.io/master: "true"
         ingress:
           enabled: true
           ingressClassName: "nginx"
