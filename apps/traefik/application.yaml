@@ -18,11 +18,25 @@ spec:
             enabled: true
           kubernetesGateway:
             enabled: true
-        certificatesResolvers:
-          myresolver:
-            acme:
-              email: rabarbrablad@gmail.com
-              storage: acme.json
+        # certificatesResolvers:
+        #   cloudflare:
+        #     acme:
+        #       email: rabarbrablad@gmail.com
+        #       storage: acme.json
+        #       dnschallenge:
+        #         provider: cloudflare
+        #         resolvers: 1.1.1.1
+        # env:
+        #   - name: CF_API_EMAIL
+        #     valueFrom:
+        #       secretKeyRef:
+        #         key: email
+        #         name: cloudflare-api-credentials
+        #   - name: CF_API_KEY
+        #     valueFrom:
+        #       secretKeyRef:
+        #         key: apiKey
+        #         name: cloudflare-api-credentials
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
