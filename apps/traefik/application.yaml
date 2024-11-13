@@ -18,6 +18,11 @@ spec:
             enabled: true
           kubernetesGateway:
             enabled: true
+        certificatesResolvers:
+          myresolver:
+            acme:
+              email: rabarbrablad@gmail.com
+              storage: acme.json
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
