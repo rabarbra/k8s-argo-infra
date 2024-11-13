@@ -18,6 +18,12 @@ spec:
             enabled: true
           kubernetesGateway:
             enabled: false
+        additionalArguments:
+          - "--log.level=DEBUG"
+          - "--certificatesresolvers.le.acme.email=rabarbrablad@gmail.com"
+          - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+          - "--certificatesresolvers.le.acme.tlschallenge=true"
+          - "--certificatesresolvers.le.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
         # certificatesResolvers:
         #   cloudflare:
         #     acme:
