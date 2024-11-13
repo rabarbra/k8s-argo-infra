@@ -17,7 +17,7 @@ spec:
           kubernetesIngress:
             enabled: true
           kubernetesGateway:
-            enabled: true
+            enabled: false
         # certificatesResolvers:
         #   cloudflare:
         #     acme:
