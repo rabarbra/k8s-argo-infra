@@ -6,7 +6,7 @@ metadata:
 spec:
   project: infra
   sources:
-  - repoURL: oci://ghcr.io/traefik/helm/traefik
+  - repoURL: https://traefik.github.io/charts
     chart: traefik
     targetRevision: "33.0.0"
     helm:
