@@ -1,5 +1,5 @@
 # TCPRoute for port 2049
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
 metadata:
   name: nfs-tcp-route-2049
@@ -15,7 +15,7 @@ spec:
           port: 2049
 ---
 # TCPRoute for port 111
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
 metadata:
   name: nfs-tcp-route-111
@@ -83,3 +83,4 @@ spec:
         namespaces:
           from: Same
 ---
+
