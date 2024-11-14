@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: contour
+  namespace: argocd
+spec:
+  project: infra
+  sources:
+  - repoURL: https://charts.bitnami.com/bitnami
+    chart: contour
+    targetRevision: "19.3.1"
+    helm:
+      valuesObject:
+        crds:
+          keep: true
+          enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: projectcontour
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle
