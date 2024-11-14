@@ -10,8 +10,8 @@ spec:
   rules:
     - matches:
         - port: 2049
-      forwardTo:
-        - serviceName: nfs-server-nfs-server-provisioner
+      backendRefs:
+        - name: nfs-server-nfs-server-provisioner
           port: 2049
 ---
 # TCPRoute for port 111
@@ -26,8 +26,8 @@ spec:
   rules:
     - matches:
         - port: 111
-      forwardTo:
-        - serviceName: nfs-server-nfs-server-provisioner
+      backendRefs:
+        - name: nfs-server-nfs-server-provisioner
           port: 111
 ---
 apiVersion: gateway.networking.k8s.io/v1alpha2
