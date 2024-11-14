@@ -11,9 +11,9 @@ spec:
     targetRevision: "19.3.1"
     helm:
       valuesObject:
-        crds:
-          keep: true
-          enabled: true
+        gatewayAPI:
+          manageCRDs: true
+        
   destination:
     server: https://kubernetes.default.svc
     namespace: projectcontour
