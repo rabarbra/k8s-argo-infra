@@ -1,0 +1,72 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: nfs-gateway
+  namespace: nfs
+spec:
+  gatewayClassName: contour
+  listeners:
+    - name: nfs-tcp-2049
+      protocol: TCP
+      port: 2049
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: nfs-udp-2049
+      protocol: UDP
+      port: 2049
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: nfs-tcp-111
+      protocol: TCP
+      port: 111
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: nfs-udp-111
+      protocol: UDP
+      port: 111
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: TCPRoute
+metadata:
+  name: nfs-tcp-route
+  namespace: nfs
+spec:
+  parentRefs:
+    - name: nfs-gateway
+  rules:
+    - matches:
+        - port: 2049
+      forwardTo:
+        - serviceName: nfs-server-nfs-server-provisioner
+          port: 2049
+    - matches:
+        - port: 111
+      forwardTo:
+        - serviceName: nfs-server-nfs-server-provisioner
+          port: 111
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: UDPRoute
+metadata:
+  name: nfs-udp-route
+  namespace: nfs
+spec:
+  parentRefs:
+    - name: nfs-gateway
+  rules:
+    - matches:
+        - port: 2049
+      forwardTo:
+        - serviceName: nfs-server-nfs-server-provisioner
+          port: 2049
+    - matches:
+        - port: 111
+      forwardTo:
+        - serviceName: nfs-server-nfs-server-provisioner
+          port: 111
