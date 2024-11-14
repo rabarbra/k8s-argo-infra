@@ -1,7 +1,8 @@
-apiVersion: gateway.networking.k8s.io/v1alpha2
+# TCPRoute for port 2049
+apiVersion: gateway.networking.k8s.io/v1beta1
 kind: TCPRoute
 metadata:
-  name: nfs-tcp-route
+  name: nfs-tcp-route-2049
   namespace: nfs
 spec:
   parentRefs:
@@ -12,6 +13,17 @@ spec:
       forwardTo:
         - serviceName: nfs-server-nfs-server-provisioner
           port: 2049
+---
+# TCPRoute for port 111
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: TCPRoute
+metadata:
+  name: nfs-tcp-route-111
+  namespace: nfs
+spec:
+  parentRefs:
+    - name: nfs-gateway
+  rules:
     - matches:
         - port: 111
       forwardTo:
